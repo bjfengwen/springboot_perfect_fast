@@ -30,17 +30,18 @@ public class UserControllerTest extends BaseTest {
 	private MockMvc mockMvc;
 
 	@Test
-	public void updateTest() throws Exception {
+	public void listTest() throws Exception {
 		
 		String result = mockMvc.perform(
-                post("/user/update")
+                get("/user/list")
                 		.contentType(MediaType.APPLICATION_JSON)
                 		.header("userId", userId)
                         .header("token", token)
+				.param("ids","USER0754071052341104,USER1023394803241619")
         ).andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
-        LOGGER.debug("refreshUser 返回结果：{}", result);
+        LOGGER.debug("返回结果：{}", result);
 		
 	}
 	
